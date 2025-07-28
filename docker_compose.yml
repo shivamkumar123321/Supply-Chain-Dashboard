@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  ingestion:
+    build: .
+    command: python ingestion.py
+    env_file: .env
+    depends_on:
+      - mcp_proxy
+
+  mcp_proxy:
+    build: .
+    command: python mcp_proxy.py
+    ports:
+      - "5000:5000"
+    env_file: .env
+
+  frontend:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file: .env
+    depends_on:
+      - mcp_proxy

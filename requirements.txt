@@ -1,0 +1,7 @@
+algoliasearch
+Flask
+streamlit
+requests
+pandas
+python-dotenv
+APScheduler
